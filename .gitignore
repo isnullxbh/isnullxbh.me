@@ -1,0 +1,12 @@
+# IDE
+.idea/
+
+# Build directories
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+Debug/
+Release/
+
+# Miscellaneous
+.DS_Store
