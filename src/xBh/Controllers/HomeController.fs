@@ -17,6 +17,16 @@ type HomeController (logger : ILogger<HomeController>) =
     member this.Index () =
         this.View()
 
+    member this.Posts () = this.RedirectToAction("Index", "Posts")
+
+    member this.Talks () = this.View()
+
+    member this.Projects () = this.View()
+
+    member this.Contact () = this.View()
+
+    member this.About () = this.View()
+
     member this.Privacy () =
         this.View()
 
