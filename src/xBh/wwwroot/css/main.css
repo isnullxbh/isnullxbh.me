@@ -73,3 +73,21 @@ main {
 body > footer {
     height: 100px;
 }
+
+.contact {
+    flex-flow: row;
+}
+
+.contact > .main {
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact > .main > img {
+    max-width: 32px;
+    margin-right: 8px;
+}
+
+.contact + .contact {
+    margin-top: 15px;
+}

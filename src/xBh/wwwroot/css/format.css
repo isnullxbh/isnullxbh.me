@@ -11,3 +11,9 @@ main {
 section > p {
     margin-bottom: .5em;
 }
+
+.contact > .note {
+    font-family: "AnonymousPro", monospace;
+    font-size: 16px;
+    margin-top: 5px;
+}
