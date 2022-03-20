@@ -91,3 +91,42 @@ body > footer {
 .contact + .contact {
     margin-top: 15px;
 }
+
+.cv-company {
+    padding: 15px 0;
+}
+
+.cv-company > header {
+    font-weight: bold;
+}
+
+.cv-project {
+    padding: 15px 0;
+}
+
+.cv-project > header {
+    font-weight: bolder;
+}
+
+.cv-res > ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+.cv-res > ul > li::marker {
+    content: "- ";
+}
+
+.cv-technologies > ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+.cv-technologies > ul > li::marker {
+    content: "- ";
+}
+
+.cv-res,
+.cv-technologies {
+    margin-top: 15px;
+}
