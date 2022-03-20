@@ -1,2 +1,1 @@
-# isnullxbh.me
-isnullxbh's website
+# [isnullxbh.me](https://isnullxbh.me)
