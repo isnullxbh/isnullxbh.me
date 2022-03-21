@@ -38,3 +38,13 @@
 .ref-people:before {
     content: "@";
 }
+
+.cv-company > header {
+    font-weight: bold;
+}
+
+.cv-project > header::before {
+    color: rgba(0, 0, 0, 0.85);
+    content: "> ";
+    font-weight: bold;
+}

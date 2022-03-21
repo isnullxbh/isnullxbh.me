@@ -96,16 +96,13 @@ body > footer {
     padding: 15px 0;
 }
 
-.cv-company > header {
-    font-weight: bold;
+.cv-company-tl {
+    position: absolute;
+    margin-left: -200px;
 }
 
 .cv-project {
     padding: 15px 0;
-}
-
-.cv-project > header {
-    font-weight: bolder;
 }
 
 .cv-res > ul {
