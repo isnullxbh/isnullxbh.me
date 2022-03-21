@@ -48,3 +48,12 @@
     content: "> ";
     font-weight: bold;
 }
+
+.cv-edu {
+    padding: 15px 0;
+    border-bottom: 1px rgba(0, 0, 0, 0.35) dashed;
+}
+
+.cv-edu > header {
+    font-weight: bold;
+}
