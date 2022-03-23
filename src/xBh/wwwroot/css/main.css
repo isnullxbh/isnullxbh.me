@@ -92,34 +92,25 @@ body > footer {
     margin-top: 15px;
 }
 
-.cv-company {
-    padding: 15px 0;
-}
-
 .cv-tl {
     position: absolute;
     margin-left: -200px;
 }
 
-.cv-project {
+.cv-company, .cv-skills, .cv-project {
     padding: 15px 0;
 }
 
-.cv-res > ul {
+.cv-res > ul,
+.cv-technologies > ul,
+.cv-skills > ul {
     list-style-type: none;
     padding-left: 30px;
 }
 
-.cv-res > ul > li::marker {
-    content: "- ";
-}
-
-.cv-technologies > ul {
-    list-style-type: none;
-    padding-left: 30px;
-}
-
-.cv-technologies > ul > li::marker {
+.cv-res > ul > li::marker,
+.cv-technologies > ul > li::marker,
+.cv-skills > ul > li::marker {
     content: "- ";
 }
 
