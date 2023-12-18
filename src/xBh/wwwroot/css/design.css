@@ -1,6 +1,5 @@
 .navbar {
     background-color: black;
-    font-size: 18px;
 }
 
 .navbar a {
@@ -13,5 +12,50 @@
 }
 
 .navbar .navbar-logo {
+    font-weight: bold;
+}
+
+.rounded {
+    border-radius: 50%;
+}
+
+.ref,
+.ref-people {
+    text-decoration: none;
+    color: #3277ED;
+}
+
+.ref:hover,
+.ref-people:hover {
+    font-weight: bold;
+}
+
+.ref:visited,
+.ref-people:visited {
+    color: #3277ED;
+}
+
+.ref-people:before {
+    content: "@";
+}
+
+.cv-company > header {
+    font-weight: bold;
+}
+
+.cv-project > header::before {
+    color: rgba(0, 0, 0, 0.85);
+    content: "> ";
+    font-weight: bold;
+}
+
+.cv-edu,
+.cv-skills {
+    padding: 15px 0;
+    border-bottom: 1px rgba(0, 0, 0, 0.35) dashed;
+}
+
+.cv-edu > header,
+.cv-skills > header {
     font-weight: bold;
 }

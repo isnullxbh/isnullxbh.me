@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="~/css/main.css"/>
     <link rel="stylesheet" href="~/css/design.css"/>
+    <link rel="stylesheet" href="~/css/format.css"/>
 </head>
 <body>
 <header>
@@ -22,6 +23,7 @@
                 <a asp-controller="Home" asp-action="Projects">Проекты</a>
                 <a asp-controller="Home" asp-action="Contact">Контакты</a>
                 <a asp-controller="Home" asp-action="About">Обо мне</a>
+                <a asp-controller="Home" asp-action="CV">[CV]</a>
             </div>
         </div>
     </nav>
@@ -29,5 +31,6 @@
 <main>
     @RenderBody()
 </main>
+<footer></footer>
 </body>
 </html>

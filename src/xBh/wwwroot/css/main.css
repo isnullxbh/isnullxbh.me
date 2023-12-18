@@ -9,6 +9,11 @@
     font-weight: bold;
 }
 
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("../fonts/RobotoMono-Regular.ttf");
+}
+
 @media screen
     and (min-device-width: 1200px)
     and (-webkit-min-device-pixel-ratio: 1)
@@ -25,7 +30,6 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "AnonymousPro", monospace;
 }
 
 html { height: 100%; }
@@ -64,4 +68,53 @@ main {
     width: var(--content-width);
     max-width: var(--max-content-width);
     margin: 100px auto;
+}
+
+body > footer {
+    height: 100px;
+}
+
+.contact {
+    flex-flow: row;
+}
+
+.contact > .main {
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact > .main > img {
+    max-width: 32px;
+    margin-right: 8px;
+}
+
+.contact + .contact {
+    margin-top: 15px;
+}
+
+.cv-tl {
+    position: absolute;
+    margin-left: -200px;
+}
+
+.cv-company, .cv-skills, .cv-project {
+    padding: 15px 0;
+}
+
+.cv-res > ul,
+.cv-technologies > ul,
+.cv-skills > ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+.cv-res > ul > li::marker,
+.cv-technologies > ul > li::marker,
+.cv-skills > ul > li::marker {
+    content: "- ";
+}
+
+.cv-res,
+.cv-technologies {
+    margin-top: 15px;
 }

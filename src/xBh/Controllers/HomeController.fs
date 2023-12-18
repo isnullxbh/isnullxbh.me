@@ -27,6 +27,8 @@ type HomeController (logger : ILogger<HomeController>) =
 
     member this.About () = this.View()
 
+    member this.CV() = this.View()
+
     member this.Privacy () =
         this.View()
 
