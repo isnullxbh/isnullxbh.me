@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy fsproj and restore as distinct layers
@@ -16,7 +16,8 @@ WORKDIR /src/xBh
 RUN dotnet publish --no-restore -o /app
 
 # Final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "xBh.dll"]
+EXPOSE 5000/tcp

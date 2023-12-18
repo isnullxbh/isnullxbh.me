@@ -15,11 +15,20 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
-        "xBh": {
+        "Dev": {
             "commandName": "Project",
             "dotnetRunMessages": "true",
             "launchBrowser": true,
             "applicationUrl": "http://localhost:5000",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Deployment": {
+            "commandName": "Project",
+            "dotnetRunMessages": "true",
+            "launchBrowser": false,
+            "applicationUrl": "http://0.0.0.0:5000",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
