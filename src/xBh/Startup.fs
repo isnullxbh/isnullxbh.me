@@ -12,6 +12,7 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Westwind.AspNetCore.Markdown
+open Markdig
 
 type Startup private () =
     new (configuration: IConfiguration) as this =
@@ -30,6 +31,8 @@ type Startup private () =
 
         services.AddMarkdown(fun configuration ->
             configuration.AddMarkdownProcessingFolder("/posts/") |> ignore
+            configuration.ConfigureMarkdigPipeline <- fun builder ->
+                builder.UseYamlFrontMatter() |> ignore
         ) |> ignore
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
