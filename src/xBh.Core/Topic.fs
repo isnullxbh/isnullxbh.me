@@ -1,0 +1,73 @@
+namespace xBh.Core
+
+open System
+open Microsoft.FSharp.Core
+
+type Topic =
+    | CompositeTopic of string * Topic list
+
+module Topic =
+    let getName (t: Topic) =
+        match t with
+        | CompositeTopic (name, _) -> name
+
+    let getSubtopics (t: Topic) =
+        match t with
+        | CompositeTopic (_, child) -> child
+
+    let hasSubtopic (s: string) (t: Topic) =
+        match t with
+        | CompositeTopic (_, child) ->
+            List.exists (fun t -> match t with | CompositeTopic (name, _) -> name = s) child
+
+    let getSubtopic (s: string) (t: Topic) : Topic option =
+        let rec find (s: string) (l: Topic list) =
+            match l with
+            | [] -> None
+            | head::tail ->
+                if (getName head) = s
+                    then Some(head)
+                    else find s tail
+
+        find s (getSubtopics t)
+
+    let ofString (s: string) =
+        let rec make (t: Topic) (p: string list) =
+            match p with
+            | [] -> t
+            | head::tail ->
+                match t with
+                | CompositeTopic (name, child) ->
+                    let node = make (CompositeTopic(head, [])) tail
+                    CompositeTopic (name, child @ [node])
+
+        let parts = s.Split([|'.'|]) |> Array.toList
+        make (CompositeTopic (parts.Head, [])) parts.Tail
+
+    let merge (t1: Topic) (t2: Topic) =
+        let rec iter (t: Topic) (s: Topic list) =
+            match s with
+            | [] -> t
+            | head::tail ->
+                let t' =
+                    match getSubtopic (getName head) t with
+                    | Some s ->
+                        let subtopicsWithoutS = List.filter (fun t -> getName t <> getName head) (getSubtopics t)
+                        let s' = iter s (getSubtopics head)
+                        CompositeTopic (getName t, subtopicsWithoutS @ [s'])
+                    | None   -> CompositeTopic (getName t, (getSubtopics t) @ [head])
+                iter t' tail
+
+        if (getName t1) = (getName t2)
+            then iter t1 (getSubtopics t2)
+            else iter (CompositeTopic ("root", [t1])) [t2]
+
+    let rec print (t: Topic) =
+        let rec printImpl (t: Topic) (depth: int) =
+            let offset = String.replicate depth "  "
+            match t with
+            | CompositeTopic (name, child) ->
+                printf $"{offset}- {name}\n"
+                List.map (fun t -> printImpl t (depth + 1)) child |> ignore
+
+        printImpl t 0
