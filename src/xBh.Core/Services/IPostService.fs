@@ -13,7 +13,10 @@ type IPostService() =
 
     member this.GetPostsPerTopic () : PostsPerTopic list =
         let folder (s: PostsPerTopic list) (t: Topic) (path: string) =
-            let path' = path + "." + (t |> Topic.getName)
+            let path' =
+                match path with
+                | "" -> (t |> Topic.getName)
+                | _  -> path + "." + (t |> Topic.getName)
 
             let level =
                 path'
