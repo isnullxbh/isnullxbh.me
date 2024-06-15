@@ -34,3 +34,19 @@ let MergeTopics () =
         ])
     ])
     Assert.AreEqual(t5, t6)
+
+[<Test>]
+let FoldTopic () =
+    let t1 = Topic.CompositeTopic ("root", [
+        CompositeTopic ("cpp", [
+            CompositeTopic("std", [CompositeTopic ("meta", [])])
+            CompositeTopic("dev", [CompositeTopic ("ides", [CompositeTopic ("idea", [])])])
+        ])
+        CompositeTopic ("java", [
+            CompositeTopic ("frameworks", [])
+        ])
+    ])
+
+    let folder l (t: Topic) = l @ [Topic.getName t]
+    let r = Topic.fold folder [] t1
+    Assert.AreEqual(r, ["meta"; "std"; "idea"; "ides"; "dev"; "cpp"; "frameworks"; "java"; "root"])
