@@ -71,3 +71,35 @@ module Topic =
                 List.map (fun t -> printImpl t (depth + 1)) child |> ignore
 
         printImpl t 0
+
+    let rec traverse (f: Topic -> unit) (t: Topic) =
+        match t with
+        | CompositeTopic (_, child) ->
+            (t |> f) |> ignore
+            List.map (traverse f) child |> ignore
+
+    let rec fold<'state> (folder: 'state -> Topic -> 'state) (s: 'state) (t: Topic) =
+        let rec f (folder: 'state -> Topic -> 'state) (s: 'state) (t: Topic list) =
+            match t with
+            | [] -> s
+            | head::tail -> f folder (fold folder s head) tail
+
+        match t with
+        | CompositeTopic (_, child) ->
+            let s' = folder s t
+            f folder s' child
+
+    let rec fold2<'state> (folder: 'state -> Topic -> string -> 'state) (s: 'state) (t: Topic) (path: string) =
+        let rec f (folder: 'state -> Topic -> string -> 'state) (s: 'state) (t: Topic list) (path: string) =
+            match t with
+            | [] -> s
+            | head::tail -> f folder (fold2 folder s head path) tail path
+
+        match t with
+        | CompositeTopic (name, child) ->
+            let s' = folder s t path
+            let path' =
+                match path with
+                | "" -> name
+                | _  -> path + "." + name
+            f folder s' child path'
