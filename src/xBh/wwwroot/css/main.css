@@ -118,3 +118,16 @@ body > footer {
 .cv-technologies {
     margin-top: 15px;
 }
+
+.post-category-links {
+    padding-top: 5px;
+    padding-left: 30px;
+}
+
+.post-category > .post-link {
+    padding-left: 0;
+}
+
+.post-category + .post-category {
+    margin-top: 5px;
+}

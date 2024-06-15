@@ -7,7 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
+        <Compile Include="Topic.fs" />
+        <Compile Include="Post.fs" />
+        <Compile Include="Services\IPostService.fs" />
+        <Compile Include="Services\PostService.fs" />
     </ItemGroup>
 
 </Project>
