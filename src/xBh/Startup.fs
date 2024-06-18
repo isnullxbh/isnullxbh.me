@@ -12,6 +12,7 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Westwind.AspNetCore.Markdown
+open xBh.Core.Services
 
 type Startup private () =
     new (configuration: IConfiguration) as this =
@@ -30,6 +31,12 @@ type Startup private () =
         services.AddMarkdown(fun configuration ->
             configuration.AddMarkdownProcessingFolder("/posts/") |> ignore
         ) |> ignore
+
+        services.AddSingleton<IPostService>(PostService()) |> ignore
+        // TODO: Can this be done the following way? Not sure.
+        let serviceProvider = services.BuildServiceProvider()
+        serviceProvider.GetService<IPostService>().Load(
+            $"{serviceProvider.GetService<IWebHostEnvironment>().WebRootPath}/posts")
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     member this.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =

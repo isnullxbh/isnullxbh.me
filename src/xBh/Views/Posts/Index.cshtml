@@ -1,3 +1,39 @@
 @{
     ViewData["Title"] = "Посты";
 }
+
+@model Microsoft.FSharp.Collections.FSharpList<xBh.Core.PostsPerTopic>
+
+<article>
+    <section>
+        @foreach (var postsPerTopic in Model)
+        {
+            if (postsPerTopic.Topic.Item1 == "root")
+            {
+                continue;
+            }
+
+            <div class="post-category" style="margin-left: calc(30px * @postsPerTopic.Level)">
+                <div class="post-title">
+                    - @postsPerTopic.Topic.Item1
+                </div>
+                <div class="post-category-links">
+                    @foreach (var post in postsPerTopic.Posts)
+                    {
+                        <div class="post" style="margin-left: 1ch;">
+                            <div>
+                                <a href="@post.Path" class="ref">@post.Title</a>
+                            </div>
+                            <div style="display: inline-flex;">
+                                @foreach (var tag in post.GetTags())
+                                {
+                                    <div class="post-tag">@tag</div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </section>
+</article>

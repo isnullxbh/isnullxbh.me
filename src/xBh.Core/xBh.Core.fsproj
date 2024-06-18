@@ -7,7 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
+        <Compile Include="Topic.fs" />
+        <Compile Include="Post.fs" />
+        <Compile Include="Services\IPostService.fs" />
+        <Compile Include="Services\PostService.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.37.0" />
+      <PackageReference Include="YamlDotNet" Version="15.1.6" />
     </ItemGroup>
 
 </Project>

@@ -118,3 +118,33 @@ body > footer {
 .cv-technologies {
     margin-top: 15px;
 }
+
+.post {
+    width: fit-content;
+}
+
+.post > div:first-child {
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+
+.post-category-links {
+    padding-top: 5px;
+    padding-left: 30px;
+}
+
+.post-category > .post {
+    padding-left: 0;
+}
+
+.post-category + .post-category {
+    margin-top: 5px;
+}
+
+.post-tag + .post-tag {
+    margin-left: 2px;
+}
+
+.post + .post {
+    margin-top: 5px;
+}

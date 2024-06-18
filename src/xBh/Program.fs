@@ -10,6 +10,7 @@ open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
+open xBh.Core.Services
 
 module Program =
     let exitCode = 0
