@@ -15,13 +15,21 @@
 
             <div class="post-category" style="margin-left: calc(30px * @postsPerTopic.Level)">
                 <div class="post-title">
-                    @postsPerTopic.Topic.Item1
+                    - @postsPerTopic.Topic.Item1
                 </div>
                 <div class="post-category-links">
                     @foreach (var post in postsPerTopic.Posts)
                     {
-                        <div class="post-link">
-                            <a href="@post.Path" class="ref">- @post.Title</a>
+                        <div class="post" style="margin-left: 1ch;">
+                            <div>
+                                <a href="@post.Path" class="ref">@post.Title</a>
+                            </div>
+                            <div style="display: inline-flex;">
+                                @foreach (var tag in post.GetTags())
+                                {
+                                    <div class="post-tag">@tag</div>
+                                }
+                            </div>
                         </div>
                     }
                 </div>
