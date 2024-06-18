@@ -1,6 +1,6 @@
 ---
-title: Post1
-topic: "C++.Standard Library.Metaprogramming"
+title: Реализация свойства типов для определения указанного члена класса
+topic: "C++.Стандартная библиотека.Метапрограммирование"
 tags: "cpp,clang"
 date: 17.01.2024
 path: posts/2024/post-1.md
