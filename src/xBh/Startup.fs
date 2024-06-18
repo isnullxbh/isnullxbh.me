@@ -32,7 +32,11 @@ type Startup private () =
             configuration.AddMarkdownProcessingFolder("/posts/") |> ignore
         ) |> ignore
 
-        services.AddScoped<IPostService, PostService>() |> ignore
+        services.AddSingleton<IPostService>(PostService()) |> ignore
+        // TODO: Can this be done the following way? Not sure.
+        let serviceProvider = services.BuildServiceProvider()
+        serviceProvider.GetService<IPostService>().Load(
+            $"{serviceProvider.GetService<IWebHostEnvironment>().WebRootPath}/posts")
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     member this.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =
@@ -48,6 +52,8 @@ type Startup private () =
         app.UseStaticFiles() |> ignore
         app.UseRouting() |> ignore
         app.UseAuthorization() |> ignore
+
+        printf $"Webroot: {env.WebRootPath}"
 
         app.UseEndpoints(fun endpoints ->
             endpoints.MapDefaultControllerRoute() |> ignore
