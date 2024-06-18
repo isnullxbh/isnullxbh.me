@@ -58,9 +58,14 @@ module Topic =
                     | None   -> CompositeTopic (getName t, (getSubtopics t) @ [head])
                 iter t' tail
 
-        if (getName t1) = (getName t2)
-            then iter t1 (getSubtopics t2)
-            else iter (CompositeTopic ("root", [t1])) [t2]
+        let result =
+            match (getName t1, getName t2) with
+            | a, b when a = b -> iter t1 (getSubtopics t2) 
+            | "root", _       -> iter t1 [t2]
+            | _, "root"       -> iter t2 [t1]
+            | _, _            -> iter (CompositeTopic ("root", [t1])) [t2]
+
+        result
 
     let rec print (t: Topic) =
         let rec printImpl (t: Topic) (depth: int) =

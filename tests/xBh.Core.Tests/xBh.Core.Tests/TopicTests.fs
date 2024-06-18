@@ -47,6 +47,6 @@ let FoldTopic () =
         ])
     ])
 
-    let folder l (t: Topic) = l @ [Topic.getName t]
-    let r = Topic.fold folder [] t1
-    Assert.AreEqual(r, ["meta"; "std"; "idea"; "ides"; "dev"; "cpp"; "frameworks"; "java"; "root"])
+    let folder (l: string list) (t: Topic) = l @ [(Topic.getName t)]
+    let r: string list = Topic.fold folder [] t1
+    Assert.AreEqual(r, ["root"; "cpp"; "std"; "meta"; "dev"; "ides"; "idea"; "java"; "frameworks"])
