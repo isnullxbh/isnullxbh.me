@@ -61,4 +61,8 @@
       <ProjectReference Include="..\xBh.Core\xBh.Core.fsproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\posts\2024\" />
+    </ItemGroup>
+
 </Project>
