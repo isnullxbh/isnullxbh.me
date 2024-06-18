@@ -7,8 +7,6 @@ open xBh.Core
 type PostService() =
     inherit IPostService()
 
-    do printf "PostService has been created\n"
-
     let mutable Posts : Post list = []
     let mutable Tags : Set<string> = Set.empty
     let mutable Topics : Topic = CompositeTopic ("root", [])
@@ -27,17 +25,14 @@ type PostService() =
             |> List.map Post.ofMarkdownString
 
         Posts <- posts
-        printf $"{Posts.Length} posts loaded\n"
 
         let tags =
             Posts
             |> List.map (_.GetTags())
-            // |> List.map Set.toList
             |> List.concat
             |> Set.ofList
 
         Tags <- tags
-        printf $"{Tags.Count} tags retrieved\n"
 
         let topics =
             Posts

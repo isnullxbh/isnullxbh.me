@@ -53,8 +53,6 @@ type Startup private () =
         app.UseRouting() |> ignore
         app.UseAuthorization() |> ignore
 
-        printf $"Webroot: {env.WebRootPath}"
-
         app.UseEndpoints(fun endpoints ->
             endpoints.MapDefaultControllerRoute() |> ignore
             endpoints.MapRazorPages() |> ignore) |> ignore

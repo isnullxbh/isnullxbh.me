@@ -72,7 +72,6 @@ module Topic =
             let offset = String.replicate depth "  "
             match t with
             | CompositeTopic (name, child) ->
-                printf $"{offset}- {name}\n"
                 List.map (fun t -> printImpl t (depth + 1)) child |> ignore
 
         printImpl t 0
