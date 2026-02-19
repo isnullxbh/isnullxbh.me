@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- ASP.NET Core 8
+- ASP.NET Core 8/9
 
 ## Deployment
 
